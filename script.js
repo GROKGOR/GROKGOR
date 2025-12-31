@@ -21,6 +21,14 @@ hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     mobileNav.classList.toggle("active");
 });
+// Close mobile menu when clicking a link
+const mobileLinks = document.querySelectorAll("#mobile-nav a");
+mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        mobileNav.classList.remove("active");
+    });
+});
 
 // REAL WALLET CONNECT
 const connectWalletBtn = document.getElementById("connect-wallet");
@@ -205,4 +213,5 @@ document.addEventListener("mousemove", e => {
     const moveY = (e.clientY - window.innerHeight/2) * 0.002;
     leaves.forEach(l => { l.x += moveX; l.y += moveY; });
     fireflies.forEach(f => { f.x += moveX; f.y += moveY; });
+
 });
