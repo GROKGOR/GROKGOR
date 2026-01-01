@@ -49,17 +49,23 @@ body {
 .btn-secondary { border:2px solid #7cff4f; color:#7cff4f; padding:14px 28px; border-radius:30px; text-decoration:none; font-weight:bold; }
 .btn-primary { background:linear-gradient(135deg,#7cff4f,#2aff9b); color:#022; padding:14px 28px; border-radius:30px; font-weight:bold; border:none; }
 
-/* HOVER */
-.hover-animate:hover { transform:translateY(-6px) scale(1.05); box-shadow:0 8px 30px rgba(122,255,79,0.5); }
+/* HOVER — FIXED: Smoother, no vibration */
+.hover-animate {
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+.hover-animate:hover {
+    transform: translateY(-8px) scale(1.06);
+    box-shadow: 0 12px 35px rgba(122,255,79,0.6);
+}
 
 /* CANVAS */
 .fog-layer, .leaves-layer, .firefly-layer { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; }
-.fog-layer { z-index:1; opacity: 0.5; } /* Made subtle */
-.firefly-layer { z-index:2; opacity: 0.4; } /* Made subtle */
-.leaves-layer { z-index:3; opacity: 0.3; } /* Made subtle */
+.fog-layer { z-index:1; opacity: 0.5; }
+.firefly-layer { z-index:2; opacity: 0.4; }
+.leaves-layer { z-index:3; opacity: 0.3; }
 
 /* SECTIONS */
-.section { padding:100px 60px; text-align:center; opacity:0; transform:translateY(30px); transition:1s ease, transform 0.8s ease; position:relative; z-index:5; }
+.section { padding:100px 60px; text-align:center; opacity:0; transform:translateY(30px); transition:opacity 1s ease, transform 0.8s ease; position:relative; z-index:5; }
 .section.show { opacity:1; transform:translateY(0) scale(1.02); }
 .section.dark { background:rgba(0,0,0,0.45); }
 .section h2 { font-family:'Orbitron',sans-serif; font-size:36px; margin-bottom:30px; }
