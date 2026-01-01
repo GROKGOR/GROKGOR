@@ -1,5 +1,7 @@
 console.log("Grokgor jungle fully alive 🦍🌿");
 
+let connectedAddress = null; // Store connected wallet address
+
 // Scroll reveal
 const sections = document.querySelectorAll(".animate");
 const revealOnScroll = () => {
@@ -20,15 +22,54 @@ hamburger.addEventListener("click", () => {
     mobileNav.classList.toggle("active");
 });
 
-// Placeholder button actions
-const connectWalletBtn = document.getElementById("connect-wallet");
-connectWalletBtn.addEventListener("click", () => {
-    alert("Wallet connection coming soon! Integrate Web3.js for full functionality once token is live.");
+// Close mobile menu when clicking a link
+const mobileLinks = document.querySelectorAll("#mobile-nav a");
+mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        mobileNav.classList.remove("active");
+    });
 });
 
+// REAL WALLET CONNECT
+const connectWalletBtn = document.getElementById("connect-wallet");
+const walletText = document.getElementById("wallet-text");
+
+async function connectWallet() {
+    if (typeof window.ethereum !== "undefined") {
+        try {
+            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+            connectedAddress = accounts[0];
+            const shortened = `${connectedAddress.slice(0, 6)}...${connectedAddress.slice(-4)}`;
+            walletText.innerText = shortened;
+            connectWalletBtn.style.background = "linear-gradient(135deg, #4fff7c, #1eff9b)";
+            alert(`Wallet connected! 🦍\nAddress: ${shortened}`);
+        } catch (error) {
+            alert("Connection rejected or failed. Make sure MetaMask is installed!");
+            console.error(error);
+        }
+    } else {
+        alert("MetaMask not detected! Install it from metamask.io 🦊");
+        window.open("https://metamask.io/download/", "_blank");
+    }
+}
+
+connectWalletBtn.addEventListener("click", connectWallet);
+
+// BUY NOW BUTTON (pre-launch version)
 const buyNowBtn = document.getElementById("buy-now");
+const buyText = document.getElementById("buy-text");
+
 buyNowBtn.addEventListener("click", () => {
-    alert("Token launch pending—stay tuned! Link to Uniswap or DEX once deployed.");
+    if (!connectedAddress) {
+        alert("Please connect your wallet first! 🦍");
+        return;
+    }
+    buyText.innerText = "Launch Pending...";
+    setTimeout(() => {
+        alert("Token not launched yet! 🚀\n\nFair launch coming soon – no presale, pure community power.\n\nStay tuned on Telegram/X for the exact launch time and DEX link!");
+        buyText.innerText = "Buy Now";
+    }, 300);
 });
 
 // Fog
