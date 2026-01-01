@@ -1,7 +1,5 @@
 console.log("Grokgor jungle fully alive 🦍🌿");
 
-let connectedAddress = null; // Store connected wallet address
-
 // Scroll reveal
 const sections = document.querySelectorAll(".animate");
 const revealOnScroll = () => {
@@ -21,55 +19,16 @@ hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     mobileNav.classList.toggle("active");
 });
-// Close mobile menu when clicking a link
-const mobileLinks = document.querySelectorAll("#mobile-nav a");
-mobileLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        mobileNav.classList.remove("active");
-    });
+
+// Placeholder button actions
+const connectWalletBtn = document.getElementById("connect-wallet");
+connectWalletBtn.addEventListener("click", () => {
+    alert("Wallet connection coming soon! Integrate Web3.js for full functionality once token is live.");
 });
 
-// REAL WALLET CONNECT
-const connectWalletBtn = document.getElementById("connect-wallet");
-const walletText = document.getElementById("wallet-text");
-
-async function connectWallet() {
-    if (typeof window.ethereum !== "undefined") {
-        try {
-            // Request account access
-            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-            connectedAddress = accounts[0];
-            const shortened = `${connectedAddress.slice(0, 6)}...${connectedAddress.slice(-4)}`;
-            walletText.innerText = shortened;
-            connectWalletBtn.style.background = "linear-gradient(135deg, #4fff7c, #1eff9b)";
-            alert(`Wallet connected! 🦍\nAddress: ${shortened}`);
-        } catch (error) {
-            alert("Connection rejected or failed. Make sure MetaMask is installed!");
-            console.error(error);
-        }
-    } else {
-        alert("MetaMask not detected! Install it from metamask.io 🦊");
-        window.open("https://metamask.io/download/", "_blank");
-    }
-}
-
-connectWalletBtn.addEventListener("click", connectWallet);
-
-// BUY NOW BUTTON (pre-launch version)
 const buyNowBtn = document.getElementById("buy-now");
-const buyText = document.getElementById("buy-text");
-
 buyNowBtn.addEventListener("click", () => {
-    if (!connectedAddress) {
-        alert("Please connect your wallet first! 🦍");
-        return;
-    }
-    buyText.innerText = "Launch Pending...";
-    setTimeout(() => {
-        alert("Token not launched yet! 🚀\n\nFair launch coming soon – no presale, pure community power.\n\nStay tuned on Telegram/X for the exact launch time and DEX link!");
-        buyText.innerText = "Buy Now";
-    }, 300);
+    alert("Token launch pending—stay tuned! Link to Uniswap or DEX once deployed.");
 });
 
 // Fog
@@ -84,7 +43,7 @@ const leavesCtx = leavesCanvas.getContext("2d");
 const fireflyCanvas = document.getElementById("fireflyCanvas");
 const fireflyCtx = fireflyCanvas.getContext("2d");
 
-// Function to resize all canvases
+// Resize canvases
 const resizeCanvases = () => {
     fogCanvas.width = window.innerWidth;
     fogCanvas.height = window.innerHeight;
@@ -94,7 +53,6 @@ const resizeCanvases = () => {
     fireflyCanvas.height = window.innerHeight;
 };
 resizeCanvases();
-window.addEventListener("load", resizeCanvases);
 
 let resizeTimeout;
 window.addEventListener("resize", () => {
@@ -143,7 +101,7 @@ function drawLeaves(){
         leavesCtx.save();
         leavesCtx.translate(l.x,l.y);
         leavesCtx.rotate(l.r*Math.PI/180);
-        leavesCtx.fillStyle="rgba(34,139,34,0.3)"; // Reduced opacity for subtlety
+        leavesCtx.fillStyle="rgba(34,139,34,0.6)";
         leavesCtx.beginPath();
         leavesCtx.ellipse(0,0,l.s/3,l.s,0,0,Math.PI*2);
         leavesCtx.fill();
@@ -170,9 +128,9 @@ function drawFireflies(){
     fireflyCtx.clearRect(0,0,fireflyCanvas.width,fireflyCanvas.height);
     fireflies.forEach(f => {
         fireflyCtx.beginPath();
-        fireflyCtx.fillStyle=`rgba(200,255,120,${f.a * 0.5})`; // Reduced overall opacity for subtlety
+        fireflyCtx.fillStyle=`rgba(200,255,120,${f.a})`;
         fireflyCtx.shadowBlur=12;
-        fireflyCtx.shadowColor="rgba(200,255,120,0.4)";
+        fireflyCtx.shadowColor="rgba(200,255,120,0.8)";
         fireflyCtx.arc(f.x,f.y,f.r,0,Math.PI*2);
         fireflyCtx.fill();
         f.x+=f.dx; f.y+=f.dy; f.a+=f.g;
@@ -213,5 +171,4 @@ document.addEventListener("mousemove", e => {
     const moveY = (e.clientY - window.innerHeight/2) * 0.002;
     leaves.forEach(l => { l.x += moveX; l.y += moveY; });
     fireflies.forEach(f => { f.x += moveX; f.y += moveY; });
-
 });
