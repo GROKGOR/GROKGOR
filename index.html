@@ -23,7 +23,9 @@
         <a href="#tokenomics">Tokenomics</a>
         <a href="#community">Community</a>
     </nav>
-    <button class="btn-wallet hover-animate" id="connect-wallet" aria-label="Connect your wallet">Connect Wallet</button>
+    <button class="btn-wallet hover-animate" id="connect-wallet" aria-label="Connect your wallet">
+        <span id="wallet-text">Connect Wallet</span>
+    </button>
     <div class="hamburger" id="hamburger" aria-label="Toggle mobile menu">
         <span></span>
         <span></span>
@@ -59,7 +61,9 @@
 
         <div class="hero-buttons">
             <a href="#community" class="btn-secondary hover-animate" aria-label="Join the community troop">Join the Troop</a>
-            <button class="btn-primary hover-animate" id="buy-now" aria-label="Buy Grokgor token now">Buy Now</button>
+            <button class="btn-primary hover-animate" id="buy-now" aria-label="Buy Grokgor token now">
+                <span id="buy-text">Buy Now</span>
+            </button>
         </div>
     </div>
 </section>
@@ -110,13 +114,47 @@
 
 <section id="tokenomics" class="section dark animate">
     <h2>Tokenomics</h2>
-    <div class="token-box hover-animate">
-        <p>🐒 Total Supply: <span class="counter" data-target="1000000000">0</span> $GROKGOR</p>
-        <p>🌿 Liquidity: 100% locked forever — no rug possible</p>
-        <p>🔥 Burns: Ongoing manual + community-driven burns to increase scarcity</p>
-        <p>💸 Taxes: 0% buy / 0% sell — pure freedom</p>
-        <p>👑 Ownership: Renounced — true decentralization</p>
-        <p>🦍 Distribution: 100% fair launched to the community</p>
+    <div class="tokenomics-grid">
+        <div class="token-card hover-animate">
+            <div class="token-icon">🐒</div>
+            <h3>Total Supply</h3>
+            <p><span class="counter" data-target="1000000000">0</span> $GROKGOR</p>
+        </div>
+        <div class="token-card hover-animate locked">
+            <div class="token-icon">🌿</div>
+            <h3>Liquidity</h3>
+            <p>100% locked forever<br><span class="locked-badge">NO RUG</span></p>
+        </div>
+        <div class="token-card hover-animate burn">
+            <div class="token-icon">🔥</div>
+            <h3>Burns</h3>
+            <p>Ongoing manual + community-driven</p>
+        </div>
+        <div class="token-card hover-animate">
+            <div class="token-icon">💸</div>
+            <h3>Taxes</h3>
+            <p>0% buy / 0% sell</p>
+        </div>
+        <div class="token-card hover-animate">
+            <div class="token-icon">👑</div>
+            <h3>Ownership</h3>
+            <p>Renounced</p>
+        </div>
+        <div class="token-card hover-animate">
+            <div class="token-icon">🦍</div>
+            <h3>Distribution</h3>
+            <p>100% fair launched</p>
+        </div>
+        <div class="token-card hover-animate">
+            <div class="token-icon">🔗</div>
+            <h3>Chain</h3>
+            <p>Solana</p>
+        </div>
+        <div class="token-card hover-animate">
+            <div class="token-icon">📜</div>
+            <h3>Contract</h3>
+            <p>Renounced</p>
+        </div>
     </div>
 </section>
 
@@ -136,10 +174,9 @@
 </section>
 
 <footer>
-    <p>© 2025 Grokgor — Built by anonymous silverbacks in the deepest jungle 🦍</p>
+    <p>© 2026 Grokgor — Built by anonymous silverbacks in the deepest jungle 🦍</p>
 </footer>
 
 <script src="script.js"></script>
 </body>
 </html>
-
