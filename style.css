@@ -1,4 +1,3 @@
-/* Previous styles retained */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
@@ -49,13 +48,13 @@ body {
 .btn-secondary { border:2px solid #7cff4f; color:#7cff4f; padding:14px 28px; border-radius:30px; text-decoration:none; font-weight:bold; }
 .btn-primary { background:linear-gradient(135deg,#7cff4f,#2aff9b); color:#022; padding:14px 28px; border-radius:30px; font-weight:bold; border:none; }
 
-/* HOVER — FIXED: Smoother, no vibration */
+/* HOVER — NEW: Gentle pop + glow only (no scale, no vibration) */
 .hover-animate {
-    transition: transform 0.3s ease, box-shadow 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .hover-animate:hover {
-    transform: translateY(-8px) scale(1.06);
-    box-shadow: 0 12px 35px rgba(122,255,79,0.6);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(122,255,79,0.5);
 }
 
 /* CANVAS */
@@ -74,12 +73,12 @@ body {
 /* FEATURES */
 .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; }
 .feature-card { background:rgba(0,0,0,0.45); padding:25px; border-radius:25px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.feature-card:hover { transform: translateY(-6px) scale(1.05) rotateZ(1deg); box-shadow:0 10px 35px rgba(122,255,79,0.4); }
+.feature-card:hover { transform: translateY(-6px); box-shadow:0 10px 35px rgba(122,255,79,0.4); }
 
 /* ROADMAP */
 .roadmap { display:grid; gap:20px; max-width:800px; margin:0 auto; }
 .roadmap-step { background:rgba(0,0,0,0.45); padding:20px; border-radius:20px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.roadmap-step:hover { transform: translateY(-6px) scale(1.03); box-shadow:0 8px 25px rgba(122,255,79,0.5); }
+.roadmap-step:hover { transform: translateY(-6px); box-shadow:0 8px 25px rgba(122,255,79,0.5); }
 .step-desc { display:block; margin-top:10px; font-size:14px; opacity:0.9; font-weight:normal; }
 
 /* TOKENOMICS */
